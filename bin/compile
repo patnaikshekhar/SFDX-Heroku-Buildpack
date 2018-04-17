@@ -16,6 +16,7 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 ### Load additional functions
 source $BP_DIR/lib/common.sh
+source $BP_DIR/lib/stdlib.sh
 
 # set defaults for optional config vars
 : ${SFDX_BUILDPACK_DEBUG:="true"}
