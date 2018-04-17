@@ -63,6 +63,8 @@ AUTH_FILE=$BUILD_DIR/$vendorDir/sfdxurl
 MDAPI_DIR="mdapi"
 mkdir -p $BUILD_DIR/$MDAPI_DIR
 
+echo "$SFDX_AUTH_URL" > "$AUTH_FILE"
+
 echo "Authorising Sandbox"
 sfdx force:auth:sfdxurl:store -f $AUTH_FILE -a Dest
 
