@@ -14,12 +14,12 @@ CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
+# set defaults for optional config vars
+: ${SFDX_BUILDPACK_DEBUG:="true"}
+
 ### Load additional functions
 source $BP_DIR/lib/common.sh
 source $BP_DIR/lib/stdlib.sh
-
-# set defaults for optional config vars
-: ${SFDX_BUILDPACK_DEBUG:="true"}
 
 ### Execute
 header 'Welcome to salesforce-buildpack!'
@@ -33,6 +33,8 @@ debug "BUILD_DIR: $BUILD_DIR"
 debug "CACHE_DIR: $CACHE_DIR"
 debug "ENV_DIR: $ENV_DIR" 
 debug "BP_DIR: $BP_DIR"
+
+setup_dirs "$BUILD_DIR"
 
 # CLI details
 SFDX_VERSION=$(sfdx version)
