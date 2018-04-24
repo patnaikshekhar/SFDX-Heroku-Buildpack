@@ -1,5 +1,11 @@
 #!/bin/sh
 
+echo "Deploying to Sandbox"
+sfdx force:mdapi:deploy --verbose --testlevel RunLocalTests --targetusername Dest --deploydir $BUILD_DIR/$MDAPI_DIR
+
+echo "Waiting for deploy to complete"
+sfdx force:mdapi:deploy:report --targetusername Dest --wait 10
+
 cat << EOF
 ---
 addons: []
