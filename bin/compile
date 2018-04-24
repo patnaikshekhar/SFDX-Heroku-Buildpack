@@ -71,5 +71,11 @@ sfdx force:auth:sfdxurl:store -f $AUTH_FILE -a Dest
 echo "Converting Source"
 sfdx force:source:convert --outputdir $BUILD_DIR/$MDAPI_DIR
 
+echo "Deploying to Sandbox"
+sfdx force:mdapi:deploy --verbose --testlevel RunLocalTests --targetusername Dest --deploydir $BUILD_DIR/$MDAPI_DIR
+
+echo "Waiting for deploy to complete"
+sfdx force:mdapi:deploy:report --targetusername Dest --wait 10
+
 header "DONE! Completed in $(($SECONDS - $START_TIME))s"
 exit 0
